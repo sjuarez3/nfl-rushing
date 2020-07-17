@@ -1,7 +1,24 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+# Seeds the database with the rushing records provided in rushings.json
+# Run following command to execute this
+# rake db:seed
+
+rushings = JSON.parse(File.read(File.join(Rails.root, 'db', 'rushing.json')))
+rushings.each do |rushing|
+  Rushing.create(
+    player: rushing["Player"],
+    team: rushing["Team"],
+    pos: rushing["Pos"],
+    att: rushing["Att"],
+    att_per_game: rushing["Att/G"],
+    yds: rushing["Yds"],
+    avg: rushing["Avg"],
+    yds_per_game: rushing["Yds/G"],
+    td: rushing["TD"],
+    lng: rushing["Lng"],
+    first: rushing["1st"],
+    first_percentage: rushing["1st%"],
+    twenty_plus: rushing["20+"],
+    forty_plus: rushing["40+"],
+    fum: rushing["FUM"]
+  )
+end

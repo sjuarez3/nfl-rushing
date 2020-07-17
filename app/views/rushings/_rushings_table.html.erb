@@ -1,0 +1,37 @@
+<div id="filterrific_results">
+  <div class="pagination">
+    <%= paginate @rushings, remote: true %>
+  </div>
+  <div>
+    <p>* Denotes column which can be sorted</p>
+  </div>
+  <div>
+    <table class="table center">
+      <thead>
+      <th><%= filterrific_sorting_link(@filterrific, :player) %>*</th>
+      <th><%= filterrific_sorting_link(@filterrific, :team)%></th>
+      <th><%= filterrific_sorting_link(@filterrific, :pos)%></th>
+      <th><%= filterrific_sorting_link(@filterrific, :att)%></th>
+      <th><%= filterrific_sorting_link(@filterrific, :att_per_game)%></th>
+      <th><%= filterrific_sorting_link(@filterrific, :yds)%>*</th>
+      <th><%= filterrific_sorting_link(@filterrific, :avg)%></th>
+      <th><%= filterrific_sorting_link(@filterrific, :yds_per_game)%></th>
+      <th><%= filterrific_sorting_link(@filterrific, :td)%>*</th>
+      <th><%= filterrific_sorting_link(@filterrific, :lng)%>*</th>
+      <th><%= filterrific_sorting_link(@filterrific, :first)%></th>
+      <th><%= filterrific_sorting_link(@filterrific, :first_percentage)%></th>
+      <th><%= filterrific_sorting_link(@filterrific, :twenty_plus)%></th>
+      <th><%= filterrific_sorting_link(@filterrific, :forty_plus)%></th>
+      <th><%= filterrific_sorting_link(@filterrific, :fum)%></th>
+      </thead>
+      <tbody>
+      <%= render partial: 'rushing_table_row', collection: @rushings, as: :rushing %>
+      </tbody>
+    </table>
+  </div>
+  <div class="pagination">
+    <%= paginate @rushings, remote: true %>
+  </div>
+  <br>
+  <%= link_to 'Download Current Table as CSV', root_path(params.to_unsafe_h.merge(format: 'csv')), class: 'btn' %>
+</div>
