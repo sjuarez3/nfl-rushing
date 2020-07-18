@@ -19,7 +19,13 @@ class RushingsController < ApplicationController
     respond_to do |format|
       format.html
       format.js
-      format.csv { send_data(Rushing.to_csv(@rushings), { filename: "rushing_#{params[:filterrific][:sorted_by]}.csv" }) }
+      format.csv do
+        if params[:download] == 'all'
+          send_data(Rushing.to_csv(Rushing.sorted_by(params[:filterrific][:sorted_by])), { filename: "rushing_all_sorted}.csv" })
+        else
+          send_data(Rushing.to_csv(@rushings), { filename: "rushing_filtered_subset.csv" })
+        end
+      end
     end
   end
 end

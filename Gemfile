@@ -35,13 +35,17 @@ gem 'jbuilder', '~> 2.5'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
-gem 'filterrific' # for sorting
+gem 'font-awesome-sass' # for sort icons
+gem 'filterrific' # for sorting help
 gem 'kaminari' # for pagination
 gem 'jquery-rails' # for jquery
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'rspec-rails' # for specs
+  gem 'shoulda-matchers' # for matchers
+  gem 'factory_bot_rails' # for factories
 end
 
 group :development do

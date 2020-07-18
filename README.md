@@ -56,11 +56,14 @@ If you have any questions regarding requirements, do not hesitate to email your 
 ### Installation and running this solution
 You will need the following requirements to run this:
 - Ruby Version: 2.6.2
-- Rails Version: 5.2.4.3
+- Rails Version: 5.2.4 or >= 5.2.4.3
 
-1. Download this repo to your machine
-2. Run the following command to install bundler: 'gem install bundler'
+1. Clone this repo to your machine
+2. Run the following command to install bundler: `gem install bundler`
 3. Run the following command to install the gems required: `bundle`
 4. Run the following commands to initialize your local database with the data provided from the `rushing.json` file: `rails db:create db:migrate db:seed` 
 5. Run the following command to start up your local server with the app: `rails s`
 6. Now open a browser and navigate to http://localhost:3000 to see the table of rushing values
+
+Note: To test support with approx. 10k records, I've added a file named `rushing_10k.json` with a little over 10k records. The seed file can be edited to point to the
+file with 10k records and you can run `rails db:reset` to drop/create/migrate/seed your local db with 10k records.

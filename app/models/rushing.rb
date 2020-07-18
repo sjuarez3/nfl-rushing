@@ -1,11 +1,19 @@
 require 'csv'
 class Rushing < ApplicationRecord
 
+  validates :td, numericality: { greater_than_or_equal_to: 0 }
+
   filterrific(
-    available_filters: %i[sorted_by]
+    available_filters: %i[sorted_by search_query]
   )
 
+  scope :search_query, lambda { |query|
+    return all if query.blank?
+    where("player LIKE ?", "%#{query}%")
+  }
+
   scope :sorted_by, lambda { |sort_option|
+    return all if sort_option.blank?
     direction = /desc$/.match?(sort_option) ? 'desc' : 'asc'
     case sort_option.to_s
     when /^player/
